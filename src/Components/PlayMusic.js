@@ -99,7 +99,7 @@ export default function MediaControlCard({ selectedSong }) {
     useEffect(() => {
         const changeMusic = async () => {
             if (selectedSong) {
-                console.log("Hi");
+                console.log(selectedSong);
                 var song = URL.createObjectURL(selectedSong.song);
                 var Image = selectedSong.inputImage?URL.createObjectURL(selectedSong.inputImage):imageAlt;
                 setImg(Image);
@@ -142,7 +142,7 @@ export default function MediaControlCard({ selectedSong }) {
                     <Card.Body>
                         <Card.Title>{selectedSong.songName}</Card.Title>
                         
-                        {selectedSong.singerName?<Card.Text>By </Card.Text>:''}
+                        {selectedSong.singerName!==""?<Card.Text>By {selectedSong.singerName}</Card.Text>:''}
                         <SkipPreviousIcon onClick={()=>increDecre(false)}/>
                         {playAudio.isPlaying ? (
                             <Pause onClick={MusicPlayer} />

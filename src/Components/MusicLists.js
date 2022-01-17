@@ -27,18 +27,18 @@ const MusicLists = ({ getSelectedSong }) => {
     const allItems = useLiveQuery(() => db.items.toArray(), []);
     const prevNext = useLiveQuery(() => increDecre.items.toArray(), []);
 
-    const [prevOrNext, setPrevOrNext] = useState(prevNext);
+    // const [prevOrNext, setPrevOrNext] = useState(prevNext);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const getSong = (songIndex) => {
         console.log(songIndex);
         const song = allItems.find((item) => item.id === songIndex);
         const index = allItems.findIndex((item) => item.id === song.id);
-        console.log(song);
+        // console.log(song);
         setSelectedIndex(index);
         getSelectedSong(song);
     };
     useEffect(async() => {
-        console.log(prevNext);
+        // console.log(prevNext);
         if (prevNext) {
             if (prevNext[0].increDecre == '+') {
                 console.log("Hi");
@@ -65,7 +65,7 @@ const MusicLists = ({ getSelectedSong }) => {
 
     return (
         <Lists>
-            {allItems ? (
+            {allItems && allItems.length? (
                 allItems.map((item) => (
                     <MusicItem
                         getSong={getSong}
@@ -75,7 +75,7 @@ const MusicLists = ({ getSelectedSong }) => {
                     />
                 ))
             ) : (
-                <div>Loading</div>
+                <h1>Uploaded music will be listed here:::</h1>
             )}
         </Lists>
     );

@@ -51,7 +51,7 @@ const UploadForm = () => {
         }));
     };
     const allItems = useLiveQuery(() => db.items.toArray(), []);
-    console.log(allItems);
+    // console.log(allItems);
     let image = "";
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -67,10 +67,10 @@ const UploadForm = () => {
 
         //    image=JSON.stringify(allItems[0].song)
         //    console.log(image);
-        console.log(formData)
+        // console.log(formData);
     };
 
-    console.log(image);
+    // console.log(image);
     return (
         <StyledForm onSubmit={submitHandler}>
             <Title>Upload a Song</Title>
@@ -113,7 +113,7 @@ const UploadForm = () => {
                 />
             </Form.Group>
             <Form.Group className='mb-3' controlId='formBasicPassword'>
-                <Form.Label>Song</Form.Label>
+                <Form.Label>Select a Song*:</Form.Label>
                 <Form.Control
                     name='song'
                     type='file'
