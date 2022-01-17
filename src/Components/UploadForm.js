@@ -86,7 +86,7 @@ const UploadForm = () => {
             </Form.Group>
 
             <Form.Group className='mb-3' controlId='formBasicPassword'>
-                <Form.Label>Name of the Singer:</Form.Label>
+                <Form.Label>Name of the Singer(Optional):</Form.Label>
                 <Form.Control
                     name='singerName'
                     type='text'
@@ -96,7 +96,7 @@ const UploadForm = () => {
             </Form.Group>
 
             <Form.Group className='mb-3' controlId='formBasicPassword'>
-                <Form.Label>Name of genre</Form.Label>
+                <Form.Label>Name of genre(Optional):</Form.Label>
                 <Form.Control
                     name='genre'
                     type='text'
@@ -105,7 +105,7 @@ const UploadForm = () => {
                 />
             </Form.Group>
             <Form.Group className='mb-3' controlId='formBasicPassword'>
-                <Form.Label>Cover Image</Form.Label>
+                <Form.Label>Cover Image(Optional):</Form.Label>
                 <Form.Control
                     name='inputImage'
                     type='file'

@@ -6,15 +6,29 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 const List = styled(ListGroup)`
     margin: 5px 10px;
-    display: flex;
+    display: flex !important ;
     flex-direction: row;
+    justify-content: space-evenly;
+
 `;
-const TextContainer = styled.div``;
+const DetailsContainer = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* flex: 4; */
+`;
+const TextContainer = styled.div`
+    margin: 0 30px;
+`;
+// const Image = styled.img`
+//     width: 40px;
+//     height: 40px;
+// `;
 const SongNameContainer = styled.h3`
     margin: 0;
     font-weight: 400;
     font-size: 1rem;
-    `;
+`;
 const SingerNameContainer = styled.h6`
     margin: 0;
     font-weight: 300;
@@ -24,19 +38,27 @@ const GenreContainer = styled.span`
     margin: 0;
     font-weight: 400;
 `;
-const IconContainer = styled.div``;
-const MusicItem = ({ data,nowDeleted,getSong }) => {
-    
+const IconContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* flex:1; */
+`;
+const MusicItem = ({ data, nowDeleted, getSong }) => {
+   
     return (
-        <List.Item>
-            <TextContainer>
-                <SongNameContainer>{data.songName}</SongNameContainer>
-                <SingerNameContainer>{data.singerName}</SingerNameContainer>
-                <GenreContainer>{data.genre}</GenreContainer>
-            </TextContainer>
+        <List.Item style={{ display: "flex", justifyContent: "space-between", alignItems:'center' }}>
+            <DetailsContainer>
+                {/* <Image src="" />  */}
+                <TextContainer>
+                    <SongNameContainer>{data.songName}</SongNameContainer>
+                    {data.singerName?<SingerNameContainer>{data.singerName}</SingerNameContainer>:''}
+                    {/* {data.genre?<GenreContainer>{data.genre}</GenreContainer>:''} */}
+                </TextContainer>
+            </DetailsContainer>
             <IconContainer>
-                <PlayArrowIcon onClick={()=>getSong(data.id)} />
-                <DeleteIcon onClick={()=>nowDeleted(data.id)} />
+                <PlayArrowIcon  onClick={() => getSong(data.id)}  />
+                <DeleteIcon onClick={() => nowDeleted(data.id)} />
             </IconContainer>
         </List.Item>
     );

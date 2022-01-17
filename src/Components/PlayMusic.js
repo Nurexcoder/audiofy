@@ -10,6 +10,7 @@ import PauseIcon from "@mui/icons-material/Pause";
 import styled from "styled-components";
 import song from "./Song.mp3";
 import { height } from "@mui/system";
+import imageAlt from './noImg.png'
 
 const Container = styled.div`
     flex: 1;
@@ -100,7 +101,7 @@ export default function MediaControlCard({ selectedSong }) {
             if (selectedSong) {
                 console.log("Hi");
                 var song = URL.createObjectURL(selectedSong.song);
-                var Image = URL.createObjectURL(selectedSong.inputImage);
+                var Image = selectedSong.inputImage?URL.createObjectURL(selectedSong.inputImage):imageAlt;
                 setImg(Image);
                 const nowSong = new Audio(song);
                 const { audio, isPlaying } = playAudio;
@@ -140,7 +141,8 @@ export default function MediaControlCard({ selectedSong }) {
                     />
                     <Card.Body>
                         <Card.Title>{selectedSong.songName}</Card.Title>
-                        <Card.Text>By {selectedSong.singerName}</Card.Text>
+                        
+                        {selectedSong.singerName?<Card.Text>By </Card.Text>:''}
                         <SkipPreviousIcon onClick={()=>increDecre(false)}/>
                         {playAudio.isPlaying ? (
                             <Pause onClick={MusicPlayer} />
@@ -152,51 +154,6 @@ export default function MediaControlCard({ selectedSong }) {
                 </Card>
             )}
         </Container>
-        // <Cards sx={{ display: "flex" }}>
-        //     <Box sx={{ display: "flex", flexDirection: "column" }}>
-        //         <CardContent sx={{ flex: "1 0 auto" }}>
-        //             <Typography component='div' variant='h5'>
-        //                 Live From Space
-        //             </Typography>
-        //             <Typography
-        //                 variant='subtitle1'
-        //                 color='text.secondary'
-        //                 component='div'>
-        //                 Mac Miller
-        //             </Typography>
-        //         </CardContent>
-        //         <CardMedia
-        //             component='img'
-        //             sx={{ width: 151, margin: "auto" }}
-        //             image='./logo192.png'
-        //             alt='Live from space album cover'
-        //         />
-        //         <Box
-        //             sx={{
-        //                 display: "flex",
-        //                 alignItems: "center",
-        //                 pl: 1,
-        //                 pb: 1,
-        //             }}>
-        //             <IconButton aria-label='previous'>
-        //                 {theme.direction === "rtl" ? (
-        //                     <SkipNextIcon />
-        //                 ) : (
-        //                     <SkipPreviousIcon />
-        //                 )}
-        //             </IconButton>
-        //             <IconButton onClick={MusicPlayer} aria-label='play/pause'>
-        //                 {playAudio.isPlaying? <PauseIcon/>:<PlayArrowIcon/>}
-        //             </IconButton>
-        //             <IconButton aria-label='next'>
-        //                 {theme.direction === "rtl" ? (
-        //                     <SkipPreviousIcon />
-        //                 ) : (
-        //                     <SkipNextIcon />
-        //                 )}
-        //             </IconButton>
-        //         </Box>
-        //     </Box>
-        // // </Cards>
+        
     );
 }
